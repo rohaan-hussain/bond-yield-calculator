@@ -26,31 +26,31 @@ A full-stack web application for calculating bond yields, built with React (fron
 
 ## Quick Start
 
-### 1. Install root dependencies
+### 1. Install all dependencies
 
 ```bash
 npm install
+cd backend && npm install && cd ..
+cd frontend && npm install && cd ..
 ```
 
-### 2. Start the backend
+### 2. Run both frontend and backend together
 
 ```bash
-cd backend
-npm install
-npm run start:dev
-```
-
-The API will be available at `http://localhost:3001/api`.
-
-### 3. Start the frontend (in a separate terminal)
-
-```bash
-cd frontend
-npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`.
+This starts both servers concurrently. The API will be at `http://localhost:3001/api` and the app at `http://localhost:5173`.
+
+### Or start them separately
+
+```bash
+# Terminal 1 - backend
+cd backend && npm run start:dev
+
+# Terminal 2 - frontend
+cd frontend && npm run dev
+```
 
 ## API
 

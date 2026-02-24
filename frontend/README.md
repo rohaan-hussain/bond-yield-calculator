@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# Bond Yield Calculator - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite frontend for the Bond Yield Calculator application.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm install
+npm run dev       # Start dev server at http://localhost:5173
+npm run build     # Build for production
+npm run preview   # Preview production build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+| Script          | Description                   |
+| --------------- | ----------------------------- |
+| `npm run dev`   | Start Vite dev server         |
+| `npm run build` | Type-check and build for prod |
+| `npm run lint`  | Run ESLint                    |
+| `npm run test`  | Run Jest tests                |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## Project Structure
+
 ```
+src/
+  main.tsx                        # App entry point
+  App.tsx                         # Root component
+  router.tsx                      # React Router configuration
+  config.ts                       # API base URL and app config
+  pages/
+    CalculatorPage.tsx            # Main bond calculator page
+    FaqPage.tsx                   # FAQ / educational content page
+  components/
+    calculator/
+      BondCalculatorForm.tsx      # Input form for bond parameters
+      CashFlowTable.tsx           # Period-by-period cash flow schedule
+      ResultsPanel.tsx            # Displays calculated yield results
+    layout/
+      Header.tsx                  # App header with navigation
+      Footer.tsx                  # App footer
+      Layout.tsx                  # Page layout wrapper
+    ui/
+      LoadingSpinner.tsx          # Loading state indicator
+      StatusBadge.tsx             # Premium / Discount / Par badge
+      Tooltip.tsx                 # Info tooltip component
+  hooks/
+    useBondCalculator.ts          # Custom hook for calculation state & API calls
+  services/
+    api.ts                        # Axios instance configuration
+    bondApi.ts                    # Bond calculation API calls
+  schemas/
+    bondCalculator.schema.ts      # Zod validation schema for form inputs
+  types/
+    bond.types.ts                 # TypeScript types for bond data
+  data/
+    faqData.ts                    # FAQ content data
+```
+
+## Tech Stack
+
+- **React 19** with TypeScript
+- **Vite** for bundling and dev server
+- **Tailwind CSS v4** for styling
+- **React Router v7** for client-side routing
+- **Zod** for form input validation
+- **Axios** for HTTP requests
+- **Sonner** for toast notifications
+- **Jest** + **React Testing Library** for tests

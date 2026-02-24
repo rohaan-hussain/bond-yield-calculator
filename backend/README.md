@@ -124,8 +124,7 @@ Each cash flow entry contains:
 src/
   main.ts                              # Application entry point
   app.module.ts                        # Root module
-  app.controller.ts                    # Root controller
-  app.service.ts                       # Root service
+  config.ts                            # App configuration (port, CORS)
   bond/
     bond.module.ts                     # Bond feature module
     bond.controller.ts                 # Bond API controller
